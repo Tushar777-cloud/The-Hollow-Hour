@@ -38,7 +38,8 @@
         .leaderboard {
             width: 100%;
             max-width: 700px;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0 8px;
             margin-bottom: 40px;
         }
 
@@ -48,7 +49,7 @@
             color: #c00;
             text-shadow: 0 0 10px rgba(180, 0, 0, 0.6);
             padding: 15px;
-            border-bottom: 2px solid #5c0000;
+            border-bottom: 3px solid #5c0000;
             text-align: center;
             letter-spacing: 0.1em;
         }
@@ -57,19 +58,23 @@
             padding: 18px 15px;
             text-align: center;
             font-size: 1.2rem;
-            border-bottom: 1px solid #200;
-            border-radius: 8px;
+            border: 3px solid #1a0000;
+            border-radius: 4px;
+            background: rgba(10, 0, 0, 0.6);
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .leaderboard tr:hover td {
-            background: rgba(180, 0, 0, 0.05);
+            background: rgba(180, 0, 0, 0.08);
+            border-color: #5c0000;
         }
 
         .rank {
             font-family: 'Creepster', cursive;
             font-size: 1.8rem;
             color: #c00;
+            text-shadow: 0 0 8px rgba(180, 0, 0, 0.5);
         }
 
         .name {
@@ -80,9 +85,24 @@
         }
 
         .first-place td {
-            border: 2px solid transparent;
-            background: rgba(0, 0, 0, 0.6);
+            border: 4px solid #ffd700;
+            background: rgba(20, 15, 0, 0.8);
+            box-shadow: 
+                0 0 15px rgba(255, 215, 0, 0.3),
+                inset 0 0 20px rgba(255, 215, 0, 0.1);
             position: relative;
+        }
+
+        .first-place td::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 2px;
+            pointer-events: none;
         }
 
         .first-place .rank {
@@ -104,29 +124,25 @@
             animation: goldGlow 2s ease-in-out infinite;
         }
 
-        .first-place td::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 8px;
-            padding: 2px;
-            background: linear-gradient(45deg, #ffd700, #ffaa00, #ffd700, #ffaa00);
-            background-size: 400% 400%;
-            animation: goldBorder 3s ease infinite;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            z-index: -1;
+        .second-place td {
+            border: 4px solid #c0c0c0;
+            background: rgba(15, 15, 15, 0.8);
+            box-shadow: 
+                0 0 15px rgba(192, 192, 192, 0.2),
+                inset 0 0 20px rgba(192, 192, 192, 0.05);
+            position: relative;
         }
 
-        .second-place td {
-            border: 2px solid transparent;
-            background: rgba(0, 0, 0, 0.6);
-            position: relative;
+        .second-place td::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px solid rgba(192, 192, 192, 0.3);
+            border-radius: 2px;
+            pointer-events: none;
         }
 
         .second-place .rank {
@@ -148,29 +164,25 @@
             animation: silverGlow 2s ease-in-out infinite;
         }
 
-        .second-place td::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 8px;
-            padding: 2px;
-            background: linear-gradient(45deg, #c0c0c0, #e8e8e8, #c0c0c0, #e8e8e8);
-            background-size: 400% 400%;
-            animation: silverBorder 3s ease infinite;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            z-index: -1;
+        .third-place td {
+            border: 4px solid #cd7f32;
+            background: rgba(20, 12, 0, 0.8);
+            box-shadow: 
+                0 0 15px rgba(205, 127, 50, 0.2),
+                inset 0 0 20px rgba(205, 127, 50, 0.05);
+            position: relative;
         }
 
-        .third-place td {
-            border: 2px solid transparent;
-            background: rgba(0, 0, 0, 0.6);
-            position: relative;
+        .third-place td::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px solid rgba(205, 127, 50, 0.3);
+            border-radius: 2px;
+            pointer-events: none;
         }
 
         .third-place .rank {
@@ -192,23 +204,16 @@
             animation: bronzeGlow 2s ease-in-out infinite;
         }
 
-        .third-place td::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 8px;
-            padding: 2px;
-            background: linear-gradient(45deg, #cd7f32, #e8a860, #cd7f32, #e8a860);
-            background-size: 400% 400%;
-            animation: bronzeBorder 3s ease infinite;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            z-index: -1;
+        .rank-cell {
+            border-right: 2px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .leaderboard tr:last-child td {
+            border-bottom: 4px solid #5c0000;
+        }
+
+        .leaderboard thead tr {
+            border-bottom: 4px solid #5c0000;
         }
 
         @keyframes goldGlow {
@@ -290,7 +295,7 @@
 <body>
     <h1>HALL OF FAME</h1>
     
-    <table class="leaderboard">
+        <table class="leaderboard">
         <thead>
             <tr>
                 <th>RANK</th>
@@ -299,44 +304,44 @@
         </thead>
         <tbody>
             <tr class="first-place">
-                <td class="rank">1</td>
+                <td class="rank rank-cell">1</td>
                 <td class="name">Shishir Rai</td>
             </tr>
             <tr class="second-place">
-                <td class="rank">2</td>
-                <td class="name">NOVA</td>
+                <td class="rank rank-cell">2</td>
+                <td class="name">Hollow</td>
             </tr>
             <tr class="third-place">
-                <td class="rank">3</td>
-                <td class="name">RAVEN</td>
+                <td class="rank rank-cell">3</td>
+                <td class="name">Hollow</td>
             </tr>
             <tr>
-                <td class="rank">4</td>
-                <td class="name">MIRA</td>
+                <td class="rank rank-cell">4</td>
+                <td class="name">Hollow</td>
             </tr>
             <tr>
-                <td class="rank">5</td>
-                <td class="name">ZARA</td>
+                <td class="rank rank-cell">5</td>
+                <td class="name">Hollow</td>
             </tr>
             <tr>
-                <td class="rank">6</td>
-                <td class="name">VEX</td>
+                <td class="rank rank-cell">6</td>
+                <td class="name">Hollow</td>
             </tr>
             <tr>
-                <td class="rank">7</td>
-                <td class="name">WREN</td>
+                <td class="rank rank-cell">7</td>
+                <td class="name">Hollow</td>
             </tr>
             <tr>
-                <td class="rank">8</td>
-                <td class="name">SABLE</td>
+                <td class="rank rank-cell">8</td>
+                <td class="name">Hollow</td>
             </tr>
             <tr>
-                <td class="rank">9</td>
-                <td class="name">LUNA</td>
+                <td class="rank rank-cell">9</td>
+                <td class="name">Hollow</td>
             </tr>
             <tr>
-                <td class="rank">10</td>
-                <td class="name">ALIA</td>
+                <td class="rank rank-cell">10</td>
+                <td class="name">Hollow</td>
             </tr>
         </tbody>
     </table>
