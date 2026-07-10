@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hollow Hour - Hall of Fame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050000;
+            font-family: 'Special Elite', cursive;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            color: #aaa;
+        }
+
+        h1 {
+            font-family: 'Creepster', cursive;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: #c00;
+            text-shadow: 0 0 20px rgba(180, 0, 0, 0.8);
+            margin-bottom: 40px;
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+
+        .leaderboard {
+            width: 100%;
+            max-width: 700px;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+
+        .leaderboard th {
+            font-family: 'Creepster', cursive;
+            font-size: 1.5rem;
+            color: #c00;
+            text-shadow: 0 0 10px rgba(180, 0, 0, 0.6);
+            padding: 15px;
+            border-bottom: 2px solid #5c0000;
+            text-align: center;
+            letter-spacing: 0.1em;
+        }
+
+        .leaderboard td {
+            padding: 18px 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #200;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .leaderboard tr:hover td {
+            background: rgba(180, 0, 0, 0.05);
+        }
+
+        .rank {
+            font-family: 'Creepster', cursive;
+            font-size: 1.8rem;
+            color: #c00;
+        }
+
+        .name {
+            font-family: 'Creepster', cursive;
+            font-size: 1.6rem;
+            color: #e0e0e0;
+            text-shadow: 0 0 8px rgba(180, 0, 0, 0.4);
+        }
+
+        .first-place td {
+            border: 2px solid transparent;
+            background: rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .first-place .rank {
+            font-size: 2.2rem;
+            color: #ffd700;
+            text-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.8),
+                0 0 20px rgba(255, 215, 0, 0.6);
+            animation: goldGlow 2s ease-in-out infinite;
+        }
+
+        .first-place .name {
+            font-size: 2rem;
+            color: #ffd700;
+            text-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.8),
+                0 0 20px rgba(255, 215, 0, 0.6),
+                0 0 40px rgba(255, 215, 0, 0.4);
+            animation: goldGlow 2s ease-in-out infinite;
+        }
+
+        .first-place td::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 8px;
+            padding: 2px;
+            background: linear-gradient(45deg, #ffd700, #ffaa00, #ffd700, #ffaa00);
+            background-size: 400% 400%;
+            animation: goldBorder 3s ease infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+        }
+
+        .second-place td {
+            border: 2px solid transparent;
+            background: rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .second-place .rank {
+            font-size: 2rem;
+            color: #c0c0c0;
+            text-shadow: 
+                0 0 10px rgba(192, 192, 192, 0.8),
+                0 0 20px rgba(192, 192, 192, 0.6);
+            animation: silverGlow 2s ease-in-out infinite;
+        }
+
+        .second-place .name {
+            font-size: 1.8rem;
+            color: #c0c0c0;
+            text-shadow: 
+                0 0 10px rgba(192, 192, 192, 0.8),
+                0 0 20px rgba(192, 192, 192, 0.6),
+                0 0 40px rgba(192, 192, 192, 0.4);
+            animation: silverGlow 2s ease-in-out infinite;
+        }
+
+        .second-place td::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 8px;
+            padding: 2px;
+            background: linear-gradient(45deg, #c0c0c0, #e8e8e8, #c0c0c0, #e8e8e8);
+            background-size: 400% 400%;
+            animation: silverBorder 3s ease infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+        }
+
+        .third-place td {
+            border: 2px solid transparent;
+            background: rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .third-place .rank {
+            font-size: 2rem;
+            color: #cd7f32;
+            text-shadow: 
+                0 0 10px rgba(205, 127, 50, 0.8),
+                0 0 20px rgba(205, 127, 50, 0.6);
+            animation: bronzeGlow 2s ease-in-out infinite;
+        }
+
+        .third-place .name {
+            font-size: 1.8rem;
+            color: #cd7f32;
+            text-shadow: 
+                0 0 10px rgba(205, 127, 50, 0.8),
+                0 0 20px rgba(205, 127, 50, 0.6),
+                0 0 40px rgba(205, 127, 50, 0.4);
+            animation: bronzeGlow 2s ease-in-out infinite;
+        }
+
+        .third-place td::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 8px;
+            padding: 2px;
+            background: linear-gradient(45deg, #cd7f32, #e8a860, #cd7f32, #e8a860);
+            background-size: 400% 400%;
+            animation: bronzeBorder 3s ease infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+        }
+
+        @keyframes goldGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        @keyframes goldBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes silverGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        @keyframes silverBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes bronzeGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        @keyframes bronzeBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .back-btn {
+            padding: 15px 40px;
+            font-family: 'Creepster', cursive;
+            font-size: 1.3rem;
+            letter-spacing: 0.2em;
+            color: #f0f0f0;
+            background: linear-gradient(180deg, #8b0000, #5c0000);
+            border: 2px solid #ff0000;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+        }
+
+        .crown {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .leaderboard {
+                font-size: 1rem;
+            }
+            
+            .leaderboard th,
+            .leaderboard td {
+                padding: 12px 8px;
+                font-size: 1rem;
+            }
+            
+            .first-place .name {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>HALL OF FAME</h1>
+    
+    <table class="leaderboard">
+        <thead>
+            <tr>
+                <th>RANK</th>
+                <th>NAME</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="first-place">
+                <td class="rank">1</td>
+                <td class="name">Shishir Rai</td>
+            </tr>
+            <tr class="second-place">
+                <td class="rank">2</td>
+                <td class="name">NOVA</td>
+            </tr>
+            <tr class="third-place">
+                <td class="rank">3</td>
+                <td class="name">RAVEN</td>
+            </tr>
+            <tr>
+                <td class="rank">4</td>
+                <td class="name">MIRA</td>
+            </tr>
+            <tr>
+                <td class="rank">5</td>
+                <td class="name">ZARA</td>
+            </tr>
+            <tr>
+                <td class="rank">6</td>
+                <td class="name">VEX</td>
+            </tr>
+            <tr>
+                <td class="rank">7</td>
+                <td class="name">WREN</td>
+            </tr>
+            <tr>
+                <td class="rank">8</td>
+                <td class="name">SABLE</td>
+            </tr>
+            <tr>
+                <td class="rank">9</td>
+                <td class="name">LUNA</td>
+            </tr>
+            <tr>
+                <td class="rank">10</td>
+                <td class="name">ALIA</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="index.html" class="back-btn">BACK TO GAME</a>
+</body>
+</html>
