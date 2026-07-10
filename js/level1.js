@@ -10,7 +10,7 @@ Game.level1 = {
         var hint = document.getElementById('challengeHintGlobal');
         var title = document.getElementById('challengeTitle');
         
-        title.textContent = 'TYPE START QUICKLY';
+        title.textContent = 'FIND LETTERS QUICKLY';
         challengeScreen.classList.add('active');
         document.body.classList.add('challenge-active');
         Game.state.isChallengeActive = true;
