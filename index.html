@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>The Hollow Hour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <canvas id="bloodCanvas"></canvas>
+    <div class="vignette"></div>
+    <div class="noise-overlay"></div>
+    
+    <div class="sanity-bar-container" id="sanityBarContainer" style="display:none;">
+        <div class="sanity-label">SANITY</div>
+        <div class="sanity-bar">
+            <div class="sanity-fill" id="sanityFill"></div>
+        </div>
+        <div class="sanity-value" id="sanityValue">100</div>
+    </div>
+    
+    <div class="container" id="landingContainer">
+        <h1 class="title">THE HOLLOW HOUR</h1>
+        <p class="tagline">Time bleeds. Darkness lingers.</p>
+        <button class="blood-btn" id="startBtn">
+            <span class="btn-text">ENTER THE HOLLOW</span>
+            <div class="btn-drips">
+                <span class="drip"></span>
+                <span class="drip"></span>
+                <span class="drip"></span>
+                <span class="drip"></span>
+                <span class="drip"></span>
+                <span class="drip"></span>
+                <span class="drip"></span>
+                <span class="drip"></span>
+            </div>
+        </button>
+        <p class="hint">Click to begin your descent</p>
+    </div>
+
+    <div class="narrative-overlay" id="narrativeOverlay">
+        <div class="narrative-box">
+            <div class="narrative-name" id="narrativeName">Alia</div>
+            <div class="narrative-text" id="narrativeText"></div>
+            <button class="narrative-skip" id="narrativeSkip">SKIP</button>
+            <div class="narrative-hint" id="narrativeHint">Click to continue</div>
+        </div>
+    </div>
+
+    <div class="nausea-overlay" id="nauseaOverlay">
+        <div class="nausea-box">
+            <div class="nausea-text" id="nauseaText">Your mind is fracturing...</div>
+            <div class="nausea-question" id="nauseaQuestion">What is your name?</div>
+            <div class="nausea-input-container">
+                <input type="text" class="nausea-input" id="nauseaInput" placeholder="TYPE YOUR NAME..." autocomplete="off">
+                <button class="nausea-submit" id="nauseaSubmit">REMEMBER</button>
+            </div>
+            <div class="nausea-timer" id="nauseaTimer">5</div>
+        </div>
+    </div>
+
+    <div class="challenge-screen" id="challengeScreen">
+        <h2 class="challenge-title" id="challengeTitle">TYPE START QUICKLY</h2>
+        
+        <div class="challenge-center" id="challengeCenter">
+            <div class="level1-content" id="level1Content">
+                <div class="typed-letters" id="typedLetters"></div>
+                <div class="letters-container" id="lettersContainer"></div>
+            </div>
+            
+            <div class="level2-content" id="level2Content" style="display:none;">
+                <div class="score-display" id="scoreDisplay">Clicks: 0 / 10</div>
+                <div class="buttons-arena" id="buttonsArena"></div>
+            </div>
+            
+            <div class="level3-content" id="level3Content" style="display:none;">
+                <div class="bomb-container">
+                    <div class="bomb-timer" id="bombTimer">45</div>
+                    <div class="timer-bar">
+                        <div class="timer-fill" id="timerFill"></div>
+                    </div>
+                    <div class="riddle-container" id="riddleContainer"></div>
+                    <div class="answer-input-container">
+                        <input type="text" class="answer-input" id="answerInput" placeholder="TYPE ANSWER HERE..." autocomplete="off">
+                        <button class="submit-answer-btn" id="submitAnswerBtn">SUBMIT</button>
+                    </div>
+                    <div class="wires-container" id="wiresContainer"></div>
+                    <p class="challenge-hint" id="challengeHint">HOLD TO CUT WIRE or type the answer</p>
+                </div>
+            </div>
+            
+            <div class="level4-content" id="level4Content" style="display:none;"></div>
+            <div class="level5-content" id="level5Content" style="display:none;"></div>
+            <div class="level6-content" id="level6Content" style="display:none;"></div>
+            <div class="level7-content" id="level7Content" style="display:none;"></div>
+            <div class="level8-content" id="level8Content" style="display:none;"></div>
+            <div class="level9-content" id="level9Content" style="display:none;"></div>
+            <div class="level10-content" id="level10Content" style="display:none;"></div>
+        </div>
+        
+        <div class="challenge-footer">
+            <div class="timer-bar" id="globalTimerBar">
+                <div class="timer-fill" id="globalTimerFill"></div>
+            </div>
+            <p class="challenge-hint" id="challengeHintGlobal">You have 10 seconds...</p>
+        </div>
+    </div>
+
+    <div class="jumpscare-overlay" id="jumpscareOverlay">
+        <img class="ghost-image" id="ghostImage" src="Assets/ghost.jpg" alt="">
+        <div class="jumpscare-text" id="jumpscareText">WRONG</div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/sanity.js"></script>
+    <script src="js/narrative.js"></script>
+    <script src="js/level1.js"></script>
+    <script src="js/level2.js"></script>
+    <script src="js/level3.js"></script>
+    <script src="js/level4.js"></script>
+    <script src="js/level5.js"></script>
+    <script src="js/level6.js"></script>
+    <script src="js/level7.js"></script>
+    <script src="js/level8.js"></script>
+    <script src="js/level9.js"></script>
+    <script src="js/level10.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
