@@ -275,6 +275,18 @@
             margin-right: 10px;
         }
 
+        .hall-desc {
+            font-family: 'Special Elite', cursive;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: #666;
+            text-align: center;
+            max-width: 600px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            padding: 0 10px;
+            font-style: italic;
+        }
+
         @media (max-width: 600px) {
             .leaderboard {
                 font-size: 1rem;
@@ -294,8 +306,9 @@
 </head>
 <body>
     <h1>HALL OF FAME</h1>
+    <p class="hall-desc">"The Hollowed" — these names were not written in glory.<br>They survived the hour... or became part of it.</p>
     
-        <table class="leaderboard">
+    <table class="leaderboard">
         <thead>
             <tr>
                 <th>RANK</th>
